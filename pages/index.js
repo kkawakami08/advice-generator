@@ -1,13 +1,16 @@
-import Image from "next/image"
+import Image from 'next/image'
+import {Manrope} from 'next/font/google'
 import dividerImage from '../public/images/pattern-divider-mobile.svg'
 import diceImage from '../public/images/icon-dice.svg'
 
+const manrope = Manrope({weight: '800', subsets: ['latin'] })
+
 export default function Home() {
   return (
-    <main className="bg-darkBlue h-screen flex items-center justify-center">
+    <main className={`${manrope.className} bg-darkBlue h-screen flex items-center justify-center`}>
       <div className="bg-darkGrayishBlue w-11/12 rounded-xl flex items-center flex-col py-10 px-7 relative gap-7 pb-16 md:w-[30rem]">
-        <p className="text-neonGreen text-xs tracking-[.3rem]">ADVICE #117</p>
-        <p className="text-lightCyan text-2xl text-center leading-8">"It is easy to sit up and take notice, what's difficult is getting up and taking action."</p>
+        <p className="text-neonGreen text-xs tracking-[.3rem]">ADVICE #1</p>
+        <p className="text-lightCyan text-2xl text-center leading-8">"a"</p>
         <div className="">
         <Image
       src={dividerImage}
