@@ -2,15 +2,27 @@ import Image from 'next/image'
 import {Manrope} from 'next/font/google'
 import dividerImage from '../public/images/pattern-divider-mobile.svg'
 import diceImage from '../public/images/icon-dice.svg'
+import {useState, useEffect} from 'react'
+import axios from 'axios'
 
 const manrope = Manrope({weight: '800', subsets: ['latin'] })
 
 export default function Home() {
+  const [advice, setAdvice] = useState({})
+
+  const getAdvice = async () => {
+   const result = await axios("https://api.adviceslip.com/advice")
+   setAdvice({id: result.data.slip.id, text: result.data.slip.advice})
+  }
+
+ useEffect(() => {getAdvice()},[])
+ 
+ 
   return (
     <main className={`${manrope.className} bg-darkBlue h-screen flex items-center justify-center`}>
       <div className="bg-darkGrayishBlue w-11/12 rounded-xl flex items-center flex-col py-10 px-7 relative gap-7 pb-16 md:w-[30rem]">
-        <p className="text-neonGreen text-xs tracking-[.3rem]">ADVICE #1</p>
-        <p className="text-lightCyan text-2xl text-center leading-8">"a"</p>
+        <p className="text-neonGreen text-xs tracking-[.3rem]">ADVICE #{advice.id}</p>
+        <p className="text-lightCyan text-2xl text-center leading-8">"{advice.text}"</p>
         <div className="">
         <Image
       src={dividerImage}
