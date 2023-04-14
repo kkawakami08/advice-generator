@@ -34,7 +34,7 @@ export default function Home() {
             ADVICE #{advice.id}
           </p>
           <p className="text-lightCyan text-2xl text-center leading-8">
-            "{advice.text}"
+            {`"${advice.text}"`}
           </p>
           <div className="">
             <Image src={dividerImage} alt="Divider" width={500} height={500} />
